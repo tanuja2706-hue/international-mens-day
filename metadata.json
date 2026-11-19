@@ -1,0 +1,6 @@
+{
+  "name": "Happy International Men's Day",
+  "description": "A personal handwritten romantic surprise for International Men's Day.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

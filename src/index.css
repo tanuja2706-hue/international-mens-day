@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cream: #fff6ee;
+    --ink-burgundy: #5a1822;
+    --ink-body: #664e52;
+    --ink-muted: #987b7f;
+    --accent-rose: #d94b70;
+    --accent-coral: #ff6e80;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-cream);
+    color: var(--ink-burgundy);
+    font-family: "Quicksand", system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-hand {
+  font-family: "Kalam", cursive;
+}
+
+.font-soft {
+  font-family: "Quicksand", system-ui, sans-serif;
+}
+
+/* Soft dreamy floating hearts animation */
+@keyframes floatHeartSlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(var(--heart-rot, 0deg));
+    opacity: var(--heart-op-start, 0.25);
+  }
+  50% {
+    transform: translate3d(var(--heart-drift-x, 12px), var(--heart-drift-y, -26px), 0)
+      scale(1.06) rotate(calc(var(--heart-rot, 0deg) + 6deg));
+    opacity: var(--heart-op-mid, 0.42);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(var(--heart-rot, 0deg));
+    opacity: var(--heart-op-start, 0.25);
+  }
+}
+
+.floating-heart {
+  animation: floatHeartSlow var(--heart-dur, 9s) ease-in-out infinite;
+  animation-delay: var(--heart-delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Gentle doodle bobbing for stars & hearts on Screen 2 */
+@keyframes gentleBob {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--doodle-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-5px) rotate(calc(var(--doodle-rot, 0deg) + 5deg));
+  }
+}
+
+.doodle-float {
+  animation: gentleBob 4.2s ease-in-out infinite;
+}
+
+/* Subtle torn paper strip feel */
+.torn-paper-strip {
+  position: relative;
+  filter: drop-shadow(0 5px 10px rgba(125, 72, 68, 0.1));
+}
+
+.torn-paper-inner {
+  clip-path: polygon(
+    1% 5%,
+    5% 1%,
+    11% 4%,
+    18% 1%,
+    25% 5%,
+    32% 2%,
+    40% 4%,
+    48% 1%,
+    56% 4%,
+    64% 1%,
+    72% 4%,
+    80% 1%,
+    88% 4%,
+    95% 1%,
+    99% 6%,
+    98.5% 22%,
+    100% 38%,
+    98.5% 55%,
+    99.5% 74%,
+    98.5% 93%,
+    94% 99%,
+    87% 96%,
+    79% 99%,
+    71% 96%,
+    63% 99%,
+    55% 96%,
+    47% 99%,
+    39% 96%,
+    31% 99%,
+    23% 96%,
+    15% 99%,
+    8% 96%,
+    2% 99%,
+    0.5% 84%,
+    1.5% 66%,
+    0% 48%,
+    1.5% 29%
+  );
+}
+
+/* Seamless cream blending masks for generated illustrations */
+.mask-peeking {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 13%,
+    black 87%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 13%,
+    black 87%,
+    transparent 100%
+  );
+}
+
+.mask-soft-oval {
+  -webkit-mask-image: radial-gradient(
+    ellipse 66% 66% at 50% 50%,
+    black 54%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 66% 66% at 50% 50%,
+    black 54%,
+    transparent 100%
+  );
+}
+
+.mask-couple-oval {
+  -webkit-mask-image: radial-gradient(
+    ellipse 76% 78% at 50% 50%,
+    black 64%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 76% 78% at 50% 50%,
+    black 64%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-heart,
+  .doodle-float {
+    animation: none !important;
+  }
+}
